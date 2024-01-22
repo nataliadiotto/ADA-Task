@@ -1,29 +1,31 @@
 package br.com.ada.pooii.domain;
 
 import java.time.LocalDateTime;
+import java.util.Random;
+
+// TODO: 22/01/24 add deadline
+// TODO: 22/01/24 format id
+// TODO: 22/01/24 format createdAt
+
 
 public class BaseTask {
 
-    private String id;
+    private final Random id;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private String priority;
 
-    public BaseTask(String id, String title, String description, LocalDateTime createdAt, String priority) {
-        this.id = id;
+    public BaseTask(String title, String description, String priority) {
+        this.id = new Random();
         this.title = title;
         this.description = description;
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
     }
 
-    public String getId() {
+    public Random getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -56,5 +58,16 @@ public class BaseTask {
 
     public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    @Override
+    public String toString() {
+        return "-------- TASK --------" + "\n" +
+                "Id: " + id + "\n" +
+                "Title: " + title + "\n" +
+                "Description: " + description + "\n" +
+                "Created at: " + createdAt + "\n" +
+                "Priority: " + priority +
+                "\n\n";
     }
 }
