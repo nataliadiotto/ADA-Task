@@ -2,6 +2,7 @@ package br.com.ada.pooii.domain;
 
 import java.time.LocalDateTime;
 import java.util.Random;
+import java.util.UUID;
 
 // TODO: 22/01/24 add deadline
 // TODO: 22/01/24 format id
@@ -10,21 +11,21 @@ import java.util.Random;
 
 public class BaseTask {
 
-    private final Random id;
+    private final UUID id;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private String priority;
 
     public BaseTask(String title, String description, String priority) {
-        this.id = new Random();
+        this.id = UUID.randomUUID();
         this.title = title;
         this.description = description;
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
     }
 
-    public Random getId() {
+    public UUID getId() {
         return id;
     }
 

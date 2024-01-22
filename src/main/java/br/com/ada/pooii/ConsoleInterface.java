@@ -9,6 +9,7 @@ import br.com.ada.pooii.repository.TaskRepositoryImpl;
 
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class ConsoleInterface {
     public static void main(String[] args) {
@@ -21,17 +22,22 @@ public class ConsoleInterface {
         taskRepository.addTask(testTask);
 
         PersonalTask personalTask = new PersonalTask("Personal Test",
-                "Personal Test Task", "medium");
+                "Personal Test Task", "urgent");
         taskRepository.addTask(personalTask);
 
         WorkTask workTask = new WorkTask("Work Test", "Work Test Task", "low");
         taskRepository.addTask(workTask);
 
-        StudyTask studyTask = new StudyTask("Study Task", "Study Test Task", "urgent");
+        StudyTask studyTask = new StudyTask("Study Task", "Study Test Task", "low");
         taskRepository.addTask(studyTask);
 
         System.out.println(taskRepository.getTasks());
 
+        System.out.println("FILTER BY PRIORITY");
+        System.out.println(taskRepository.getTasksByPriority("urgent"));
+
+        System.out.println("FILTER BY ID");
+        System.out.println(taskRepository.getTaskByID(UUID.fromString("ae7c0f76-858f-4032-9803-202d92d019cf")));
 
 //        System.out.println("----- ADA Task -----\n" +
 //                    "Choose an option:\n" +
