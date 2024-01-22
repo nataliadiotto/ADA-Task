@@ -63,12 +63,12 @@ public class BaseTask {
 
     @Override
     public String toString() {
-        return "-------- TASK --------" + "\n" +
+        return "\n-------- TASK --------" + "\n" +
                 "Id: " + id + "\n" +
                 "Title: " + title + "\n" +
                 "Description: " + description + "\n" +
                 "Created at: " + createdAt + "\n" +
                 "Priority: " + priority +
-                "\n\n";
+                "\n";
     }
 }

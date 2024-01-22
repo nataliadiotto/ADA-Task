@@ -28,7 +28,7 @@ public class ConsoleInterface {
         WorkTask workTask = new WorkTask("Work Test", "Work Test Task", "low");
         taskRepository.addTask(workTask);
 
-        StudyTask studyTask = new StudyTask("Study Task", "Study Test Task", "low");
+        StudyTask studyTask = new StudyTask("Study Task", "Study Test Task", "low", "English");
         taskRepository.addTask(studyTask);
 
         System.out.println(taskRepository.getTasks());
