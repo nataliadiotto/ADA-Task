@@ -14,7 +14,7 @@ public class BaseTask {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.now();
         this.priority = priority;
     }
 

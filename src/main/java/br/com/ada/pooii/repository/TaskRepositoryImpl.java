@@ -7,11 +7,11 @@ import java.util.List;
 
 // TODO: 21/01/24 fix type error (should be overriding T type, not BaseTask) 
 
-public class InMemoryTaskRepository <T extends BaseTask> implements TaskRepository{
+public class TaskRepositoryImpl<T extends BaseTask> implements TaskRepository{
 
     private List<T> tasks;
 
-    public InMemoryTaskRepository() {
+    public TaskRepositoryImpl() {
         this.tasks = new ArrayList<>();
     }
 
