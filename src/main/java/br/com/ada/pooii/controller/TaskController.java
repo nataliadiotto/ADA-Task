@@ -5,6 +5,8 @@ import br.com.ada.pooii.domain.BaseTask;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: 22/01/24 descobrir a diferenca entre controller e repository
+
 public class TaskController <T extends BaseTask> {
 
     private List<T> tasksList;

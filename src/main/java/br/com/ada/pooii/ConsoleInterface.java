@@ -36,8 +36,8 @@ public class ConsoleInterface {
         System.out.println("FILTER BY PRIORITY");
         System.out.println(taskRepository.getTasksByPriority("urgent"));
 
-        System.out.println("FILTER BY ID");
-        System.out.println(taskRepository.getTaskByID(UUID.fromString("ae7c0f76-858f-4032-9803-202d92d019cf")));
+        taskRepository.removeTask(workTask);
+        System.out.println(taskRepository.getTasks());
 
 //        System.out.println("----- ADA Task -----\n" +
 //                    "Choose an option:\n" +
