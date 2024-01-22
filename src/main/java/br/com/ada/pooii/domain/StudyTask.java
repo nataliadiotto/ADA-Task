@@ -6,9 +6,8 @@ public class StudyTask extends BaseTask{
 
     private String studySubject;
 
-    public StudyTask(String title, String description, LocalDateTime createdAt, String priority) {
+    public StudyTask(String id, String title, String description, LocalDateTime createdAt, String priority) {
         super(id, title, description, createdAt, priority);
-        this.studySubject = studySubject;
     }
 
     public String getStudySubject() {
