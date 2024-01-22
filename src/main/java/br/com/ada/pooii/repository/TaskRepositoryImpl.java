@@ -5,9 +5,11 @@ import br.com.ada.pooii.domain.BaseTask;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: 21/01/24 fix type error (should be overriding T type, not BaseTask) 
+// TODO: 22/01/24 Implement update task
+// TODO: 22/01/24 return a copy of the list to avoid external modifications
 
-public class TaskRepositoryImpl<T extends BaseTask> implements TaskRepository{
+
+public class TaskRepositoryImpl<T extends BaseTask> implements TaskRepository<T>{
 
     private List<T> tasks;
 
@@ -16,42 +18,24 @@ public class TaskRepositoryImpl<T extends BaseTask> implements TaskRepository{
     }
 
     @Override
-    public void addTask(BaseTask task) {
-
+    public void addTask(T task) {
+        tasks.add(task);
     }
 
     @Override
-    public void removeTask(BaseTask task) {
-
+    public void removeTask(T task) {
+        tasks.remove(task);
     }
 
     @Override
-    public void updateTask(BaseTask task) {
-
+    public void updateTask(T task) {
+        //implementar
     }
 
     @Override
-    public List getTasks() {
-        return null;
+    public List<T> getTasks() {
+        return tasks; // Retornar uma cópia da lista para evitar modificações externas
     }
-
-//    @Override
-//    public void addTask(T task){
-//        tasks.add(task);
-//    }
-//
-//    @Override
-//    public void removeTask(T task){
-//        tasks.remove(task);
-//    }
-//
-//    @Override
-//    public void updateTask(T task) {
-//        //implementar
-//    }
-
-
-    //// Retornar uma cópia da lista para evitar modificações externas
 
 
 }
