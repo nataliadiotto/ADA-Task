@@ -14,7 +14,7 @@ import java.util.UUID;
 // TODO: 22/01/24 list tasks by creation date
 
 
-public class TaskRepositoryImpl<T extends BaseTask> implements TaskRepository<T>{
+public class TaskRepositoryImpl<T extends BaseTask> implements Repository<T> {
 
     private List<T> tasks;
 

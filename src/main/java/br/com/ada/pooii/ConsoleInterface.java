@@ -4,12 +4,10 @@ import br.com.ada.pooii.domain.BaseTask;
 import br.com.ada.pooii.domain.PersonalTask;
 import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.domain.WorkTask;
-import br.com.ada.pooii.repository.TaskRepository;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
 
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class ConsoleInterface {
     public static void main(String[] args) {
@@ -36,6 +34,7 @@ public class ConsoleInterface {
         System.out.println("FILTER BY PRIORITY");
         System.out.println(taskRepository.getTasksByPriority("urgent"));
 
+        System.out.println("\nREMOVING TASK");
         taskRepository.removeTask(workTask);
         System.out.println(taskRepository.getTasks());
 
@@ -67,6 +66,8 @@ public class ConsoleInterface {
 //            default:
 //                System.out.println("Choose a valid option.");
 //        }
+
+        //dar opcoes de tipos de tasks no menu
 
 
 

@@ -5,7 +5,7 @@ import br.com.ada.pooii.domain.BaseTask;
 
 import java.util.List;
 
-public interface TaskRepository <T extends BaseTask> {
+public interface Repository<T extends BaseTask> {
 
     void addTask(T task);
     void removeTask(T task);
