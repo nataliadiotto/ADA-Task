@@ -5,13 +5,18 @@ import br.com.ada.pooii.domain.BaseTask;
 
 import java.util.List;
 
-public interface Repository<T extends BaseTask> {
+public interface Repository<T extends BaseTask, U> {
 
     void addTask(T task);
-    void removeTask(T task);
+    T findById(U id);
+    List<T> findAll();
     void updateTask(T task);
+    void deleteTask(U id);
+    T findByPriority(String priority);
 
-    List<T> getTasks();
+
+
+
 
 
 }

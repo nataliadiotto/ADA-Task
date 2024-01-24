@@ -4,7 +4,6 @@ import br.com.ada.pooii.domain.BaseTask;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 // TODO: 22/01/24 Implement update task
 // TODO: 22/01/24 return a copy of the list to avoid external modifications
@@ -14,7 +13,7 @@ import java.util.UUID;
 // TODO: 22/01/24 list tasks by creation date
 
 
-public class TaskRepositoryImpl<T extends BaseTask> implements Repository<T> {
+public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, U> {
 
     private List<T> tasks;
 
@@ -24,42 +23,54 @@ public class TaskRepositoryImpl<T extends BaseTask> implements Repository<T> {
 
     @Override
     public void addTask(T task) {
-        tasks.add(task);
+        this.tasks.add(task);
     }
 
     @Override
-    public void removeTask(T task) {
-        tasks.remove(task);
+    public void deleteTask(U id) {
+        Integer index = findIndexById((Integer) id);
+        this.tasks.remove(index);
     }
 
     @Override
     public void updateTask(T task) {
-        //implementar
+        Integer index = findIndexById(task.getId());
+        tasks.set(index, task);
     }
 
     @Override
-    public List<T> getTasks() {
-        return tasks; // Retornar uma cópia da lista para evitar modificações externas
+    public List<T> findAll() {
+        return this.tasks;
     }
 
-    public List<T> getTasksByPriority(String priority){
+    @Override
+    public T findById(U id) {
+        for (T task: tasks) {
+            if (task.getId().equals(id)) {
+                return task;
+            }
+        } return null;
+    }
+
+
+    public T findByPriority(String priority) {
         for (T task : tasks) {
             if (task.getPriority().equals(priority)) {
-                List<T> tasksByPriority = new ArrayList<>();
-                tasksByPriority.add(task);
-                return tasksByPriority;
-            }
-        }
-        return null;
-    }
-
-    public T getTaskByID(UUID id) {
-        for (T task : tasks) {
-            if (task.getId().equals(UUID.fromString(String.valueOf(id)))) {
                 return task;
             }
         }
         return null;
     }
 
+    public Integer findIndexById(Integer id) {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getId().equals(id)){
+                return i;
+            }
+
+        }
+        return -1;
+    }
+
 }
+

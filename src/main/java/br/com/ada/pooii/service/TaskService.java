@@ -5,33 +5,33 @@ import br.com.ada.pooii.repository.TaskRepositoryImpl;
 
 import java.util.List;
 
-public class TaskService <T extends BaseTask>{
+public class TaskService <T extends BaseTask, Integer>{
 
-    private final TaskRepositoryImpl taskRepositoryImpl;
+    private final TaskRepositoryImpl<T, Integer> taskRepositoryImpl;
 
     public TaskService(TaskRepositoryImpl taskRepositoryImpl) {
         this.taskRepositoryImpl = taskRepositoryImpl;
     }
 
     public void saveTask(T task) {
-        System.out.println("Saving task");
+        System.out.println("Saving task " + task.getId());
         taskRepositoryImpl.addTask(task);
     }
 
-    public void deleteTask(T task) {
-        System.out.println("Deleting task");
-        taskRepositoryImpl.removeTask(task);
+    public void deleteTask(Integer id) {
+        System.out.println("Deleting task " + id);
+        taskRepositoryImpl.deleteTask((id));
     }
 
     //update task nao é a mesma coisa que get + save?
     public void updateTask(T task) {
-        System.out.println("Updating task!");
+        System.out.println("Updating task...");
         taskRepositoryImpl.updateTask(task);
     }
 
-    public List<T> listTasks(List<T> tasks) {
-        System.out.println("Task saved!");
-        return taskRepositoryImpl.getTasks();
+    public List<T> findAll() {
+        System.out.println("Retrieving all tasks...");
+        return taskRepositoryImpl.findAll();
     }
 
 

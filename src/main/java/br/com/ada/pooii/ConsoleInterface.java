@@ -29,22 +29,16 @@ public class ConsoleInterface {
         StudyTask studyTask = new StudyTask("Study Task", "Study Test Task", "low", "English");
         taskRepository.addTask(studyTask);
 
-        System.out.println(taskRepository.getTasks());
+        System.out.println(taskRepository.findAll());
 
         System.out.println("FILTER BY PRIORITY");
-        System.out.println(taskRepository.getTasksByPriority("urgent"));
+        System.out.println(taskRepository.findByPriority("urgent"));
 
         System.out.println("\nREMOVING TASK");
-        taskRepository.removeTask(workTask);
-        System.out.println(taskRepository.getTasks());
+        //taskRepository.removeTask(workTask);
+        System.out.println(taskRepository.findAll());
 
-//        System.out.println("----- ADA Task -----\n" +
-//                    "Choose an option:\n" +
-//                    "1 - Create new task\n" +
-//                    "2 - Edit task\n" +
-//                    "3 - Delete task\n" +
-//                    "4 - List all tasks\n" +
-//                    "5 - Exit\n");
+//
 //
 //        System.out.print("Option: ");
 //        Integer option = sc.nextInt();

@@ -1,7 +1,6 @@
 package br.com.ada.pooii.domain;
 
 import java.time.LocalDateTime;
-import java.util.Random;
 import java.util.UUID;
 
 // TODO: 22/01/24 add deadline
@@ -11,22 +10,26 @@ import java.util.UUID;
 
 public class BaseTask {
 
-    private final UUID id;
+    private Integer id;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private String priority;
 
     public BaseTask(String title, String description, String priority) {
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.title = title;
         this.description = description;
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(){
+        this.id = id;
     }
 
     public String getTitle() {
