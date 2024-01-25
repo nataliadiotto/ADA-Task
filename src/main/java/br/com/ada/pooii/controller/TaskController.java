@@ -25,8 +25,8 @@ public class TaskController <T extends BaseTask> {
 
         };
 
-    void deleteTask();
-    void editTask();
-    void displayTasks();
+//    void deleteTask();
+//    void editTask();
+//    void displayTasks();
 
 }
