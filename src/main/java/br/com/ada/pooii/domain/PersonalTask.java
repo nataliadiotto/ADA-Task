@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class PersonalTask extends BaseTask{
 
-    public PersonalTask(String title, String description, String priority) {
+    public PersonalTask(String title, String description, Priority priority) {
         super(title, description, priority);
 
     }

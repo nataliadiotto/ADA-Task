@@ -14,9 +14,9 @@ public class BaseTask {
     private String title;
     private String description;
     private LocalDateTime createdAt;
-    private String priority;
+    private Priority priority;
 
-    public BaseTask(String title, String description, String priority) {
+    public BaseTask(String title, String description, Priority priority) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -56,11 +56,11 @@ public class BaseTask {
         this.createdAt = createdAt;
     }
 
-    public String getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Priority priority) {
         this.priority = priority;
     }
 
