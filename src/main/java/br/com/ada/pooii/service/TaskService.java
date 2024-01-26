@@ -20,7 +20,7 @@ public class TaskService <T extends BaseTask, Integer>{
 
     public void deleteTask(Integer id) {
         System.out.println("Deleting task " + id);
-        taskRepositoryImpl.deleteTask((id));
+        taskRepositoryImpl.deleteTask((java.lang.Integer) id);
     }
 
     //update task nao é a mesma coisa que get + save?
@@ -32,6 +32,10 @@ public class TaskService <T extends BaseTask, Integer>{
     public List<T> findAll() {
         System.out.println("Retrieving all tasks...");
         return taskRepositoryImpl.findAll();
+    }
+
+    public List<T> findById(Integer id) {
+
     }
 
 

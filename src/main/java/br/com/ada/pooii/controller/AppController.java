@@ -14,33 +14,20 @@ public class AppController {
         this.sc = new Scanner(System.in);
     }
 
-    public void start(){
+    public static void start(){
+        Scanner sc = new Scanner(System.in);
         System.out.println("----- ADA Task -----\n");
 
         mainMenu();
-        Integer option = sc.nextInt();
-        if (option == 5) return;
+        int mainMenuOption = sc.nextInt();
+        if (mainMenuOption == 5) return;
 
         while(true) {
-            switch (option){
+            switch (mainMenuOption){
                 case 1:
                     System.out.println("CREATE NEW TASK");
-                    tasksMenu();
-                    Integer taskOption = sc.nextInt();
-                    String taskType;
-                    switch (taskOption){
-                        case 1:
-                            taskType = "Personal Task";
-                            break;
-                        case 2:
-                            taskType = "Study Task";
-                            break;
-                        case 3:
-                            taskType = "Work Task";
-                            break;
-                        default:
-                            System.out.println("Choose a valid option.");
-                    }
+                    taskTypeMenu();
+
                     break;
                 case 2:
                     System.out.println("EDIT TASK");
@@ -60,24 +47,49 @@ public class AppController {
 
     }
 
-    public void mainMenu() {
+    public static void mainMenu() {
         System.out.println("----- MENU -----");
         System.out.println(
-                    "Choose an option:\n" +
-                    "1. Create new task\n" +
-                    "2. Edit task\n" +
-                    "3. Delete task\n" +
-                    "4. List all tasks\n" +
-                    "5. Exit");
+                "Choose an option:\n" +
+                        "1. Create new task\n" +
+                        "2. Edit task\n" +
+                        "3. Delete task\n" +
+                        "4. List all tasks\n" +
+                        "5. Exit");
         System.out.print("Choose an option: ");
     }
 
-    public void tasksMenu() {
+    public static void taskTypeMenu() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Select task type:" +
                 "1. Personal Task\n" +
                 "2. Study Task\n" +
                 "3. Work Task");
         System.out.println("Choose an option: ");
+        int taskOption = sc.nextInt();
+        String taskType;
+        switch (taskOption){
+            case 1:
+                taskType = "Personal Task";
+                break;
+            case 2:
+                taskType = "Study Task";
+                break;
+            case 3:
+                taskType = "Work Task";
+                break;
+            default:
+                System.out.println("Choose a valid option.");
+        }
+    }
+
+    public static void newBaseTask() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Insert task title: ");
+        String title = sc.nextLine();
+        System.out.println("Insert task description: ");
+        String description = sc.nextLine();
+
     }
 
 }

@@ -1,7 +1,6 @@
 package br.com.ada.pooii.domain;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 // TODO: 22/01/24 add deadline
 // TODO: 22/01/24 format id
@@ -28,8 +27,8 @@ public class BaseTask {
         return id;
     }
 
-    public void setId(){
-        this.id = id;
+    public void setId(Integer id){
+        this.id = this.id;
     }
 
     public String getTitle() {
