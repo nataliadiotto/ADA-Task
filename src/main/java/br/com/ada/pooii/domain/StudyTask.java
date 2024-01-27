@@ -12,4 +12,11 @@ public class StudyTask extends BaseTask{
         this.studySubject = studySubject;
     }
 
+    public String getStudySubject() {
+        return studySubject;
+    }
+
+    public void setStudySubject(String studySubject) {
+        this.studySubject = studySubject;
+    }
 }

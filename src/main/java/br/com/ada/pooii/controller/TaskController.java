@@ -8,13 +8,11 @@ import java.util.Scanner;
 
 public interface TaskController <T extends BaseTask> {
 
-    void start();
-
     void createTask();
 
     void displayTasks();
 
-    void updateTask();
+   void updateTask();
 
     void deleteTask();
 

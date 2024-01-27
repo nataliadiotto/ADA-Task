@@ -34,8 +34,9 @@ public class TaskService <T extends BaseTask, Integer>{
         return taskRepositoryImpl.findAll();
     }
 
-    public List<T> findById(Integer id) {
-
+    public T findById(Integer id) {
+        System.out.println("Retrieving task by id...");
+        return taskRepositoryImpl.findById((java.lang.Integer) id);
     }
 
 
