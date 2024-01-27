@@ -5,8 +5,19 @@ import java.util.Random;
 
 public class PersonalTask extends BaseTask{
 
-    public PersonalTask(String title, String description, Priority priority) {
-        super(title, description, priority);
+    private String category;
 
+    public PersonalTask(String title, String description, Priority priority, String category) {
+        super(title, description, priority);
+        this.category = category;
+
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

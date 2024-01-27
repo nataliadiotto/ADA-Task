@@ -30,7 +30,7 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         System.out.println("Insert study task subject: ");
         String studySubject = sc.nextLine();
 
-        StudyTask studyTask = new StudyTask(title, description, priority, studySubject);
+        BaseTask studyTask = new StudyTask(title, description, priority, studySubject);
         taskService.saveTask((T) studyTask);// como fazer sem casting?
         System.out.println("Study Task saved successfully!");
     }
@@ -47,22 +47,22 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         T selectedTask = taskService.findById(id);
 
         System.out.print("Insert new task title: ");
-        String newTitle = sc.nextLine();
-        selectedTask.setTitle(newTitle);
+        String updatedTitle = sc.nextLine();
+        selectedTask.setTitle(updatedTitle);
 
         System.out.println("Insert new task description: ");
-        String newDescription = sc.nextLine();
-        selectedTask.setDescription(newDescription);
+        String updatedDescription = sc.nextLine();
+        selectedTask.setDescription(updatedDescription);
 
         System.out.println("Choose a new task priority: ");
-        Priority newPriority = choosePriority();
-        selectedTask.setPriority(newPriority);
+        Priority updatedPriority = choosePriority();
+        selectedTask.setPriority(updatedPriority);
 
         //check if selectedTask has studySubject attribute
         if (selectedTask instanceof StudyTask) {
             System.out.println("Insert new study task subject: ");
-            String studySubject = sc.nextLine();
-            ((StudyTask) selectedTask).setStudySubject(studySubject);
+            String updatedSubject = sc.nextLine();
+            ((StudyTask) selectedTask).setStudySubject(updatedSubject);
         }
 
         taskService.updateTask(selectedTask);
