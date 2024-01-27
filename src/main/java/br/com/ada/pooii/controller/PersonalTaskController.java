@@ -1,20 +1,17 @@
 package br.com.ada.pooii.controller;
 
-import br.com.ada.pooii.domain.BaseTask;
-import br.com.ada.pooii.domain.Priority;
-import br.com.ada.pooii.domain.StudyTask;
-import br.com.ada.pooii.domain.WorkTask;
+import br.com.ada.pooii.domain.*;
 import br.com.ada.pooii.service.TaskService;
 
 import java.util.Scanner;
 
-public class WorkTaskController <T extends BaseTask> implements TaskController {
+public class PersonalTaskController <T extends BaseTask> implements TaskController {
 
     private final TaskService<T, Integer> taskService;
 
     private Scanner sc;
 
-    public WorkTaskController(TaskService<T, Integer> taskService) {
+    public PersonalTaskController(TaskService<T, Integer> taskService) {
         this.taskService = taskService;
         this.sc = new Scanner(System.in);
     }
@@ -27,12 +24,12 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
-        System.out.println("Insert work task project: ");
-        String project = sc.nextLine();
+        System.out.println("Insert personal task category: ");
+        String category = sc.nextLine();
 
-        BaseTask workTask = new WorkTask(title, description, priority, project);
-        taskService.saveTask((T) workTask);// como fazer sem casting?
-        System.out.println("Work Task saved successfully!");
+        BaseTask personalTask = new PersonalTask(title, description, priority, category);
+        taskService.saveTask((T) personalTask);// como fazer sem casting?
+        System.out.println("Personal Task saved successfully!");
     }
 
     @Override
@@ -58,15 +55,15 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
         Priority updatedPriority = choosePriority();
         selectedTask.setPriority(updatedPriority);
 
-        //check if selectedTask has project attribute
-        if (selectedTask instanceof WorkTask) {
-            System.out.println("Insert new work task project: ");
-            String updatedProject = sc.nextLine();
-            ((WorkTask) selectedTask).setProject(updatedProject);
+        //check if selectedTask has category attribute
+        if (selectedTask instanceof PersonalTask) {
+            System.out.println("Insert new personal task category: ");
+            String updatedCategory = sc.nextLine();
+            ((PersonalTask) selectedTask).setCategory(updatedCategory);
         }
 
         taskService.updateTask(selectedTask);
-        System.out.println("Work Task updated successfully!");
+        System.out.println("Personal Task updated successfully!");
 
     }
 
@@ -76,8 +73,7 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
         Integer id = sc.nextInt();
 
         taskService.deleteTask(id);
-        System.out.println("Work task deleted successfully!");
+        System.out.println("Personal task deleted successfully!");
     }
 }
-
 
