@@ -14,13 +14,15 @@ public class BaseTask {
     private String description;
     private LocalDateTime createdAt;
     private Priority priority;
+    private CurrentStatus currentStatus;
 
-    public BaseTask(String title, String description, Priority priority) {
+    public BaseTask(String title, String description, Priority priority, CurrentStatus currentStatus) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
+        this.currentStatus = currentStatus;
     }
 
     public Integer getId() {
@@ -61,6 +63,14 @@ public class BaseTask {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public CurrentStatus getCurrentStatus() {
+        return currentStatus;
+    }
+
+    public void setCurrentStatus(CurrentStatus currentStatus) {
+        this.currentStatus = currentStatus;
     }
 
     @Override

@@ -1,11 +1,10 @@
 package br.com.ada.pooii.controller;
 
-import br.com.ada.pooii.domain.BaseTask;
-import br.com.ada.pooii.domain.Priority;
-import br.com.ada.pooii.domain.StudyTask;
-import br.com.ada.pooii.domain.WorkTask;
+import br.com.ada.pooii.domain.*;
 import br.com.ada.pooii.service.TaskService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class WorkTaskController <T extends BaseTask> implements TaskController {
@@ -27,17 +26,18 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
+        CurrentStatus status = chooseStatus();
         System.out.println("Insert work task project: ");
         String project = sc.nextLine();
 
-        BaseTask workTask = new WorkTask(title, description, priority, project);
+        BaseTask workTask = new WorkTask(title, description, priority, status, project);
         taskService.saveTask((T) workTask);// como fazer sem casting?
         System.out.println("Work Task saved successfully!");
     }
 
     @Override
     public void displayTasks() {
-        var tasks = taskService.findAll();
+        List<T> tasks = taskService.findAll(new ArrayList<>());
     }
 
     @Override
@@ -57,6 +57,10 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
         System.out.println("Choose a new task priority: ");
         Priority updatedPriority = choosePriority();
         selectedTask.setPriority(updatedPriority);
+
+        System.out.println("Change task status: ");
+        CurrentStatus updatedStatus = chooseStatus();
+        selectedTask.setCurrentStatus(updatedStatus);
 
         //check if selectedTask has project attribute
         if (selectedTask instanceof WorkTask) {

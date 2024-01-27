@@ -3,6 +3,8 @@ package br.com.ada.pooii.controller;
 import br.com.ada.pooii.domain.*;
 import br.com.ada.pooii.service.TaskService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PersonalTaskController <T extends BaseTask> implements TaskController {
@@ -11,7 +13,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
 
     private Scanner sc;
 
-    public PersonalTaskController(TaskService<T, Integer> taskService) {
+    public PersonalTaskController(TaskService taskService) {
         this.taskService = taskService;
         this.sc = new Scanner(System.in);
     }
@@ -20,21 +22,22 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
     public void createTask() {
         System.out.print("Insert task title: ");
         String title = sc.nextLine();
-        System.out.println("Insert task description: ");
+        System.out.print("Insert task description: ");
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
+        CurrentStatus status = chooseStatus();
         System.out.println("Insert personal task category: ");
         String category = sc.nextLine();
 
-        BaseTask personalTask = new PersonalTask(title, description, priority, category);
+        BaseTask personalTask = new PersonalTask(title, description, priority, status, category);
         taskService.saveTask((T) personalTask);// como fazer sem casting?
         System.out.println("Personal Task saved successfully!");
     }
 
     @Override
     public void displayTasks() {
-        var tasks = taskService.findAll();
+        List<T> tasks = taskService.findAll(new ArrayList<>());
     }
 
     @Override
@@ -54,6 +57,10 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
         System.out.println("Choose a new task priority: ");
         Priority updatedPriority = choosePriority();
         selectedTask.setPriority(updatedPriority);
+
+        System.out.println("Change task status: ");
+        CurrentStatus updatedStatus = chooseStatus();
+        selectedTask.setCurrentStatus(updatedStatus);
 
         //check if selectedTask has category attribute
         if (selectedTask instanceof PersonalTask) {

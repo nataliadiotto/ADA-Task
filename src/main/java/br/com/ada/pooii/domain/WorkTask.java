@@ -7,8 +7,8 @@ public class WorkTask extends BaseTask{
 
     private String project;
 
-    public WorkTask(String title, String description, Priority priority, String project) {
-        super(title, description, priority);
+    public WorkTask(String title, String description, Priority priority, CurrentStatus currentStatus, String project) {
+        super(title, description, priority, currentStatus);
         this.project = project;
     }
 

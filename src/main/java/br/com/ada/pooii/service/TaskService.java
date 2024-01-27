@@ -19,7 +19,7 @@ public class TaskService <T extends BaseTask, Integer>{
     }
 
     public void deleteTask(Integer id) {
-        System.out.println("Deleting task " + id);
+        System.out.println("Deleting task...");
         taskRepositoryImpl.deleteTask((java.lang.Integer) id);
     }
 
@@ -29,9 +29,12 @@ public class TaskService <T extends BaseTask, Integer>{
         taskRepositoryImpl.updateTask(task);
     }
 
-    public List<T> findAll() {
+    public List<T> findAll(List<T> tasks) {
         System.out.println("Retrieving all tasks...");
-        return taskRepositoryImpl.findAll();
+        for (T task : tasks) {
+            System.out.println(task);
+        }
+        return tasks;
     }
 
     public T findById(Integer id) {

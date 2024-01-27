@@ -7,8 +7,8 @@ public class PersonalTask extends BaseTask{
 
     private String category;
 
-    public PersonalTask(String title, String description, Priority priority, String category) {
-        super(title, description, priority);
+    public PersonalTask(String title, String description, Priority priority, CurrentStatus currentStatus, String category) {
+        super(title, description, priority, currentStatus);
         this.category = category;
 
     }

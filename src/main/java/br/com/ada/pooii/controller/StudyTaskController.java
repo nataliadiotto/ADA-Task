@@ -1,11 +1,14 @@
 package br.com.ada.pooii.controller;
 
 import br.com.ada.pooii.domain.BaseTask;
+import br.com.ada.pooii.domain.CurrentStatus;
 import br.com.ada.pooii.domain.Priority;
 import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.service.TaskService;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StudyTaskController <T extends BaseTask> implements TaskController{
@@ -27,22 +30,22 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
+        CurrentStatus status = chooseStatus();
         System.out.println("Insert study task subject: ");
         String studySubject = sc.nextLine();
 
-        BaseTask studyTask = new StudyTask(title, description, priority, studySubject);
+        BaseTask studyTask = new StudyTask(title, description, priority, status, studySubject);
         taskService.saveTask((T) studyTask);// como fazer sem casting?
         System.out.println("Study Task saved successfully!");
     }
 
     @Override
     public void displayTasks() {
-        var tasks = taskService.findAll();
+        List<T> tasks = taskService.findAll(new ArrayList<>());
     }
 
     @Override
     public void updateTask() {
-        System.out.println("Choose a task to edit (id): ");
         Integer id = sc.nextInt();
         T selectedTask = taskService.findById(id);
 
@@ -54,9 +57,13 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         String updatedDescription = sc.nextLine();
         selectedTask.setDescription(updatedDescription);
 
-        System.out.println("Choose a new task priority: ");
+        System.out.println("Change task priority: ");
         Priority updatedPriority = choosePriority();
         selectedTask.setPriority(updatedPriority);
+
+        System.out.println("Change task status: ");
+        CurrentStatus updatedStatus = chooseStatus();
+        selectedTask.setCurrentStatus(updatedStatus);
 
         //check if selectedTask has studySubject attribute
         if (selectedTask instanceof StudyTask) {
