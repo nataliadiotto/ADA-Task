@@ -37,7 +37,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
 
     @Override
     public void displayTasks() {
-        List<T> tasks = taskService.findAll(new ArrayList<>());
+        taskService.findAll();
     }
 
     @Override

@@ -29,8 +29,9 @@ public class TaskService <T extends BaseTask, Integer>{
         taskRepositoryImpl.updateTask(task);
     }
 
-    public List<T> findAll(List<T> tasks) {
+    public List<T> findAll() {
         System.out.println("Retrieving all tasks...");
+        List<T> tasks = taskRepositoryImpl.findAll();
         for (T task : tasks) {
             System.out.println(task);
         }

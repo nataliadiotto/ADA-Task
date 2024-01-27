@@ -95,7 +95,7 @@ public interface TaskController <T extends BaseTask> {
                     break;
                 case 5:
                     System.out.println("Exiting application...");
-                    break;
+                    return;
                 default:
                     System.out.println("Choose a valid option.");
             }

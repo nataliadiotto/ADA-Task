@@ -37,7 +37,7 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
 
     @Override
     public void displayTasks() {
-        List<T> tasks = taskService.findAll(new ArrayList<>());
+        taskService.findAll();
     }
 
     @Override

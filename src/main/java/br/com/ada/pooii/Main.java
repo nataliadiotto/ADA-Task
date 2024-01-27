@@ -34,7 +34,7 @@ public class Main {
                 Priority.HIGH,
                 CurrentStatus.PENDING,
                 "Budget Review");
-        taskService.saveTask(personalTask);
+        taskService.saveTask(workTask);
 
         BaseTask studyTask = new StudyTask("Prepare presentation",
                 "Prepare ppt presentation on Phonetics and Phonology",
