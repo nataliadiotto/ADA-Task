@@ -20,7 +20,7 @@ public class TaskService <T extends BaseTask, ID>{
     }
 
     public void deleteTask(Integer id) {
-        System.out.println("Deleting task " + id +"...");
+        System.out.println("Deleting task " + id + "...");
         taskRepositoryImpl.deleteTask(id);
     }
 

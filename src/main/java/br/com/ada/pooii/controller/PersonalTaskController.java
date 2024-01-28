@@ -73,12 +73,9 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
     }
 
     @Override
-    public void deleteTask() {
-        System.out.println("Choose a task to delete (id): ");
-        Integer id = sc.nextInt();
-
+    public void deleteTask(Integer id) {
         taskService.deleteTask(id);
-        System.out.println("Personal task deleted successfully!");
+        System.out.println("Task deleted successfully!");
     }
 }
 

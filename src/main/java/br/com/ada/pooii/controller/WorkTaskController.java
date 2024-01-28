@@ -72,13 +72,9 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
 
     }
 
-    @Override
-    public void deleteTask() {
-        System.out.println("Choose a task to delete (id): ");
-        Integer id = sc.nextInt();
-
+    public void deleteTask(Integer id) {
         taskService.deleteTask(id);
-        System.out.println("Work task deleted successfully!");
+        System.out.println("Task deleted successfully!");
     }
 }
 

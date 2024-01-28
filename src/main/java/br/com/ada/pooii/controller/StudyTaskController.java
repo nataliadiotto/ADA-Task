@@ -75,11 +75,8 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
     }
 
     @Override
-    public void deleteTask() {
-        System.out.println("Choose a task to delete (id): ");
-        Integer id = sc.nextInt();
-
-        taskService.deleteTask(id);
-        System.out.println("Study task deleted successfully!");
+    public void deleteTask(Integer id) {
+       taskService.deleteTask(id);
+       System.out.println("Task deleted successfully!");
     }
 }

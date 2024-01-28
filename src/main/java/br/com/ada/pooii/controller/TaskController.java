@@ -16,7 +16,7 @@ public interface TaskController <T extends BaseTask> {
 
    void updateTask(Integer taskId, T task);
 
-    void deleteTask();
+    void deleteTask(Integer taskId);
 
     default Priority choosePriority() {
         Priority priority = null;
@@ -90,7 +90,9 @@ public interface TaskController <T extends BaseTask> {
                     break;
                 case 3:
                     System.out.println("--- DELETE TASK ---");
-                    deleteTask();
+                    System.out.print("Insert the task ID to delete: ");
+                    int taskToDeleteId  = sc.nextInt();
+                    deleteTask(taskToDeleteId);
                     break;
                 case 4:
                     System.out.println("--- LIST ALL TASKS ---");
@@ -174,14 +176,5 @@ public interface TaskController <T extends BaseTask> {
         }
         System.out.println("Invalid task type.");
     }
-
-//    static void newBaseTask() {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.print("Insert task title: ");
-//        String title = sc.nextLine();
-//        System.out.println("Insert task description: ");
-//        String description = sc.nextLine();
-//
-//    }
 
 }

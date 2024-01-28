@@ -21,9 +21,21 @@ public class Main {
         TaskController personalTaskController = new PersonalTaskController(taskService);
         TaskController studyTaskController = new StudyTaskController(taskService);
         TaskController workTaskController = new WorkTaskController(taskService);
-//        AppController appController = new AppController(personalTaskController,
-//                studyTaskController, workTaskController);
-//
+
+        populateList();
+
+        TaskController taskController = personalTaskController;
+        taskController.start();
+
+        sc.close();
+
+    }
+
+    protected static void populateList(){
+
+        TaskRepositoryImpl<BaseTask, Integer> taskRepository = TaskRepositoryImpl.getInstance(); //basetask ou outro?
+        TaskService<BaseTask, Integer> taskService = new TaskService(taskRepository);
+
         BaseTask personalTask = new PersonalTask("Clean bedroom",
                 "I need to clean my bedroom",
                 Priority.LOW,
@@ -44,12 +56,6 @@ public class Main {
                 CurrentStatus.IN_PROGRESS,
                 "English");
         taskService.saveTask(studyTask);
-
-        TaskController taskController = personalTaskController;
-        taskController.start();
-
-
-        sc.close();
-
     }
+
 }
