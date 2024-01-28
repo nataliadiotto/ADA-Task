@@ -24,12 +24,12 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
     public void createTask() {
         System.out.print("Insert task title: ");
         String title = sc.nextLine();
-        System.out.println("Insert task description: ");
+        System.out.print("Insert task description: ");
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
         CurrentStatus status = chooseStatus();
-        System.out.println("Insert study task subject: ");
+        System.out.print("Insert study task subject: ");
         String studySubject = sc.nextLine();
 
         BaseTask studyTask = new StudyTask(title, description, priority, status, studySubject);

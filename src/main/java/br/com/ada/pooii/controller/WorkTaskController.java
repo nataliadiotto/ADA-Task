@@ -22,12 +22,12 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
     public void createTask() {
         System.out.print("Insert task title: ");
         String title = sc.nextLine();
-        System.out.println("Insert task description: ");
+        System.out.print("Insert task description: ");
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
         CurrentStatus status = chooseStatus();
-        System.out.println("Insert work task project: ");
+        System.out.print("Insert work task project: ");
         String project = sc.nextLine();
 
         BaseTask workTask = new WorkTask(title, description, priority, status, project);

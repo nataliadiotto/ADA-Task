@@ -42,7 +42,6 @@ public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, 
         Integer taskIndex = findIndexById(id);
         if (taskIndex != -1) {
             this.tasks.remove((int)taskIndex);
-            System.out.println("Task deleted successfully!");
         } else {
             System.out.println("Task not found!");
         }
@@ -63,7 +62,7 @@ public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, 
     public T findById(Integer id) {
         Integer taskIndex = findIndexById(id);
         if (taskIndex != -1) {
-            tasks.remove(taskIndex);
+            return tasks.get(taskIndex);
         }
         throw new IllegalArgumentException("No tasks were found with ID: " + id);
     }

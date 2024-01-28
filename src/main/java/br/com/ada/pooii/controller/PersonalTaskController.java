@@ -62,7 +62,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
 
         //check if selectedTask has category attribute
         if (selectedTask instanceof PersonalTask) {
-            System.out.println("Insert new personal task category: ");
+            System.out.print("Insert new personal task category: ");
             String updatedCategory = sc.nextLine();
             ((PersonalTask) selectedTask).setCategory(updatedCategory);
         }
