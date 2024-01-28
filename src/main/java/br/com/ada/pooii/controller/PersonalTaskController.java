@@ -65,7 +65,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
         if (selectedTask instanceof PersonalTask) {
             System.out.print("Insert new personal task category: ");
             String updatedCategory = sc.nextLine();
-            ((PersonalTask) selectedTask).setCategory(updatedCategory);
+            ((PersonalTask) selectedTask).setLabel(updatedCategory);
         }
 
         taskService.updateTask(selectedTask);

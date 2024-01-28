@@ -19,4 +19,10 @@ public class StudyTask extends BaseTask{
     public void setStudySubject(String studySubject) {
         this.studySubject = studySubject;
     }
+
+    @Override
+    public void printTasks() {
+        super.printTasks();
+        System.out.println("Subject: " + studySubject);
+    }
 }

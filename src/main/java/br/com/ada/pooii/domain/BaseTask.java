@@ -82,14 +82,12 @@ public class BaseTask {
         this.currentStatus = currentStatus;
     }
 
-    @Override
-    public String toString() {
-        return "\n-------- TASK --------" + "\n" +
-                "Id: " + id + "\n" +
-                "Title: " + title + "\n" +
-                "Description: " + description + "\n" +
-                "Created at: " + createdAt + "\n" +
-                "Priority: " + priority +
-                "\n";
+    public void printTasks()  {
+        System.out.println("\n-------- TASK --------");
+        System.out.println("Id: " + id);
+        System.out.println("Title: " + title);
+        System.out.println("Description: " + description);
+        System.out.println( "Created at: " + createdAt );
+        System.out.println("Priority: " + priority );
     }
 }

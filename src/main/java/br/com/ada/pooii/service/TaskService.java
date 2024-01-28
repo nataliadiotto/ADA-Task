@@ -33,7 +33,7 @@ public class TaskService <T extends BaseTask, ID>{
         System.out.println("Retrieving all tasks...");
         List<T> tasks = taskRepositoryImpl.findAll();
         for (T task : tasks) {
-            System.out.println(task);
+            task.printTasks();
         }
         return tasks;
     }

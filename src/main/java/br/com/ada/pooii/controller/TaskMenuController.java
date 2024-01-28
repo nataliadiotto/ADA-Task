@@ -57,7 +57,7 @@ public class TaskMenuController<T extends BaseTask>{
     }
 
     private static void mainMenu() {
-        System.out.println("----- MENU -----");
+        System.out.println("\n----- MENU -----");
         System.out.println(
                 "Choose an option:\n" +
                         "1. Create new task\n" +

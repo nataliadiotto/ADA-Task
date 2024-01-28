@@ -19,4 +19,10 @@ public class WorkTask extends BaseTask{
     public void setProject(String project) {
         this.project = project;
     }
+
+    @Override
+    public void printTasks() {
+        super.printTasks();
+        System.out.println("Project: " + project);
+    }
 }

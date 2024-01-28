@@ -5,19 +5,25 @@ import br.com.ada.pooii.domain.enums.Priority;
 
 public class PersonalTask extends BaseTask{
 
-    private String category;
+    private String label;
 
-    public PersonalTask(String title, String description, Priority priority, CurrentStatus currentStatus, String category) {
+    public PersonalTask(String title, String description, Priority priority, CurrentStatus currentStatus, String label) {
         super(title, description, priority, currentStatus);
-        this.category = category;
+        this.label = label;
 
     }
 
-    public String getCategory() {
-        return category;
+    public String getLabel() {
+        return label;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    @Override
+    public void printTasks() {
+        super.printTasks();
+        System.out.println("Label: " + label);
     }
 }
