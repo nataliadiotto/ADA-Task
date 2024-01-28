@@ -14,11 +14,20 @@ import java.util.List;
 
 public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, U> {
 
+    private static TaskRepositoryImpl instance;
     private List<T> tasks;
    // private Integer id = 1;
 
-    public TaskRepositoryImpl() {
+    private TaskRepositoryImpl(){
         this.tasks = new ArrayList<>();
+    }
+
+    //making it a singleton class, ensuring that only one instance exists at any given time
+    public static TaskRepositoryImpl getInstance() {
+        if (instance == null) {
+            instance = new TaskRepositoryImpl();
+        }
+        return instance;
     }
 
     @Override

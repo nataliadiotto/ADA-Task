@@ -16,7 +16,7 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        TaskRepositoryImpl<BaseTask, Integer> taskRepository = new TaskRepositoryImpl(); //basetask ou outro?
+        TaskRepositoryImpl<BaseTask, Integer> taskRepository = TaskRepositoryImpl.getInstance(); //basetask ou outro?
         TaskService<BaseTask, Integer> taskService = new TaskService(taskRepository);
         TaskController personalTaskController = new PersonalTaskController(taskService);
         TaskController studyTaskController = new StudyTaskController(taskService);

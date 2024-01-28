@@ -69,7 +69,7 @@ public interface TaskController <T extends BaseTask> {
     }
 
     default void start(){
-        TaskRepositoryImpl taskRepository = new TaskRepositoryImpl<>();
+        TaskRepositoryImpl taskRepository = TaskRepositoryImpl.getInstance();
         Scanner sc = new Scanner(System.in);
         System.out.println("----- ADA Task -----\n");
 
@@ -133,17 +133,17 @@ public interface TaskController <T extends BaseTask> {
         switch (taskOption){
             case 1:
                 taskType = "Personal Task";
-                TaskController<PersonalTask> personalTaskController = new PersonalTaskController(new TaskService<>(new TaskRepositoryImpl<PersonalTask, Integer>()));
+                TaskController<PersonalTask> personalTaskController = new PersonalTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
                 personalTaskController.createTask();
                 break;
             case 2:
                 taskType = "Study Task";
-                TaskController<StudyTask> studyTaskTaskController = new StudyTaskController<>(new TaskService<>(new TaskRepositoryImpl<StudyTask, Integer>()));
+                TaskController<StudyTask> studyTaskTaskController = new StudyTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
                 studyTaskTaskController.createTask();
                 break;
             case 3:
                 taskType = "Work Task";
-                TaskController<WorkTask> workTaskTaskController = new WorkTaskController<>(new TaskService<>(new TaskRepositoryImpl<WorkTask, Integer>()));
+                TaskController<WorkTask> workTaskTaskController = new WorkTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
                 workTaskTaskController.createTask();
                 break;
             default:
@@ -153,17 +153,17 @@ public interface TaskController <T extends BaseTask> {
 
     default void updateTaskByType(T task) {
         if (task instanceof PersonalTask) {
-            PersonalTaskController personalTaskController = new PersonalTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
+            PersonalTaskController personalTaskController = new PersonalTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
             personalTaskController.updateTask(task);
         return;
         }
         if (task instanceof StudyTask) {
-            StudyTaskController studyTaskController = new StudyTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
+            StudyTaskController studyTaskController = new StudyTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
             studyTaskController.updateTask(task);
         return;
         }
         if (task instanceof WorkTask) {
-            WorkTaskController workTaskController = new WorkTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
+            WorkTaskController workTaskController = new WorkTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
             workTaskController.updateTask(task);
         return;
         }
