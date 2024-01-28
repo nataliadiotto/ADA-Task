@@ -4,6 +4,7 @@ import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 // TODO: 22/01/24 add deadline
 // TODO: 22/01/24 format id
@@ -26,6 +27,7 @@ public class BaseTask {
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
         this.currentStatus = currentStatus;
+
     }
 
     private static int lastId = 0; // Static variable to keep track of the last generated ID
@@ -82,12 +84,18 @@ public class BaseTask {
         this.currentStatus = currentStatus;
     }
 
+    public String formatCreatedAt() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm:ss");
+
+        // Format the createdAt timestamp using the defined formatter
+        return createdAt.format(formatter);
+    }
     public void printTasks()  {
         System.out.println("\n-------- TASK --------");
         System.out.println("Id: " + id);
         System.out.println("Title: " + title);
         System.out.println("Description: " + description);
-        System.out.println( "Created at: " + createdAt );
+        System.out.println( "Created at: " + formatCreatedAt());
         System.out.println("Priority: " + priority );
     }
 }
