@@ -1,9 +1,9 @@
 package br.com.ada.pooii.controller;
 
 import br.com.ada.pooii.domain.BaseTask;
+import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
-import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.service.TaskService;
 
 

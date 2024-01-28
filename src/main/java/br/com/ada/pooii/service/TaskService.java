@@ -1,6 +1,5 @@
 package br.com.ada.pooii.service;
 
-import br.com.ada.pooii.controller.TaskController;
 import br.com.ada.pooii.domain.BaseTask;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
 

@@ -1,7 +1,10 @@
 package br.com.ada.pooii;
 
 import br.com.ada.pooii.controller.*;
-import br.com.ada.pooii.domain.*;
+import br.com.ada.pooii.domain.BaseTask;
+import br.com.ada.pooii.domain.PersonalTask;
+import br.com.ada.pooii.domain.StudyTask;
+import br.com.ada.pooii.domain.WorkTask;
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
@@ -16,26 +19,23 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        TaskRepositoryImpl<BaseTask, Integer> taskRepository = TaskRepositoryImpl.getInstance(); //basetask ou outro?
+        TaskRepositoryImpl<BaseTask, Integer> taskRepository = TaskRepositoryImpl.getInstance();
         TaskService<BaseTask, Integer> taskService = new TaskService(taskRepository);
-        TaskController personalTaskController = new PersonalTaskController(taskService);
-        TaskController studyTaskController = new StudyTaskController(taskService);
-        TaskController workTaskController = new WorkTaskController(taskService);
+        populateList(taskService); // Pass taskService to populateList
 
-        populateList();
+        // Create controllers for different task types
+        TaskController<BaseTask> personalTaskController = new PersonalTaskController<>(taskService);
+        TaskController<BaseTask> studyTaskController = new StudyTaskController<>(taskService);
+        TaskController<BaseTask> workTaskController = new WorkTaskController<>(taskService);
 
-        TaskController taskController = personalTaskController;
-        taskController.start();
+        // Initialize TaskMenuController with one of the task controllers
+        TaskMenuController<BaseTask> taskMenuController = new TaskMenuController<>(personalTaskController);
+        taskMenuController.start();
 
         sc.close();
-
     }
 
-    protected static void populateList(){
-
-        TaskRepositoryImpl<BaseTask, Integer> taskRepository = TaskRepositoryImpl.getInstance(); //basetask ou outro?
-        TaskService<BaseTask, Integer> taskService = new TaskService(taskRepository);
-
+    protected static void populateList(TaskService<BaseTask, Integer> taskService) {
         BaseTask personalTask = new PersonalTask("Clean bedroom",
                 "I need to clean my bedroom",
                 Priority.LOW,
@@ -57,5 +57,4 @@ public class Main {
                 "English");
         taskService.saveTask(studyTask);
     }
-
 }
