@@ -41,16 +41,16 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
     }
 
     @Override
-    public void updateTask() {
+    public void updateTask(BaseTask task) {
         System.out.println("Choose a task to edit (id): ");
         Integer id = sc.nextInt();
         T selectedTask = taskService.findById(id);
 
-        System.out.print("Insert new task title: ");
+        System.out.print("Insert new personal task title: ");
         String updatedTitle = sc.nextLine();
         selectedTask.setTitle(updatedTitle);
 
-        System.out.println("Insert new task description: ");
+        System.out.println("Insert new personal task description: ");
         String updatedDescription = sc.nextLine();
         selectedTask.setDescription(updatedDescription);
 
@@ -58,7 +58,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
         Priority updatedPriority = choosePriority();
         selectedTask.setPriority(updatedPriority);
 
-        System.out.println("Change task status: ");
+        System.out.println("Change personal task status: ");
         CurrentStatus updatedStatus = chooseStatus();
         selectedTask.setCurrentStatus(updatedStatus);
 

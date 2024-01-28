@@ -20,7 +20,7 @@ public class BaseTask {
     private CurrentStatus currentStatus;
 
     public BaseTask(String title, String description, Priority priority, CurrentStatus currentStatus) {
-        this.id = id;
+        this.id = generateId();
         this.title = title;
         this.description = description;
         this.createdAt = LocalDateTime.now();
@@ -28,13 +28,19 @@ public class BaseTask {
         this.currentStatus = currentStatus;
     }
 
+    private static int lastId = 0; // Static variable to keep track of the last generated ID
+
+    private static synchronized int generateId() {
+        return ++lastId; // Increment and return the last ID
+    }
+
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id){
-        this.id = this.id;
-    }
+//    public void setId(Integer id){
+//        this.id = id;
+//    }
 
     public String getTitle() {
         return title;

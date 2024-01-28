@@ -15,7 +15,7 @@ import java.util.List;
 public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, U> {
 
     private List<T> tasks;
-    private Integer id = 1;
+   // private Integer id = 1;
 
     public TaskRepositoryImpl() {
         this.tasks = new ArrayList<>();
@@ -23,8 +23,8 @@ public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, 
 
     @Override
     public void addTask(T task) {
-        task.setId(id);
-        id++;
+       // task.setId(id);
+       // id++;
         this.tasks.add(task);
     }
 

@@ -14,7 +14,7 @@ public interface TaskController <T extends BaseTask> {
 
     void displayTasks();
 
-   void updateTask();
+   void updateTask(T task);
 
     void deleteTask();
 
@@ -73,7 +73,6 @@ public interface TaskController <T extends BaseTask> {
         Scanner sc = new Scanner(System.in);
         System.out.println("----- ADA Task -----\n");
 
-        //looping nao esta quebrando na opcao 5
         while(true) {
             mainMenu();
             int mainMenuOption = sc.nextInt();
@@ -84,8 +83,10 @@ public interface TaskController <T extends BaseTask> {
                     break;
                 case 2:
                     System.out.println("--- EDIT TASK ---");
-                    updateTask();
-                    //taskRepository.updateTask();
+                    System.out.println("Insert the ID: ");
+                    int taskToEditID  = sc.nextInt();
+                    BaseTask task = taskRepository.findById(taskToEditID);
+                    updateTaskByType((T) task);
                     break;
                 case 3:
                     System.out.println("--- DELETE TASK ---");
@@ -129,25 +130,44 @@ public interface TaskController <T extends BaseTask> {
         System.out.println();
         String taskType;
 
-        TaskController<PersonalTask> personalTaskController = new PersonalTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
-        TaskController<StudyTask> studyTaskController = new StudyTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
-        TaskController<WorkTask> workTaskController = new WorkTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
         switch (taskOption){
             case 1:
                 taskType = "Personal Task";
+                TaskController<PersonalTask> personalTaskController = new PersonalTaskController(new TaskService<>(new TaskRepositoryImpl<PersonalTask, Integer>()));
                 personalTaskController.createTask();
                 break;
             case 2:
                 taskType = "Study Task";
-                studyTaskController.createTask();
+                TaskController<StudyTask> studyTaskTaskController = new StudyTaskController<>(new TaskService<>(new TaskRepositoryImpl<StudyTask, Integer>()));
+                studyTaskTaskController.createTask();
                 break;
             case 3:
                 taskType = "Work Task";
-                workTaskController.createTask();
+                TaskController<WorkTask> workTaskTaskController = new WorkTaskController<>(new TaskService<>(new TaskRepositoryImpl<WorkTask, Integer>()));
+                workTaskTaskController.createTask();
                 break;
             default:
                 System.out.println("Choose a valid option.");
         }
+    }
+
+    default void updateTaskByType(T task) {
+        if (task instanceof PersonalTask) {
+            PersonalTaskController personalTaskController = new PersonalTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
+            personalTaskController.updateTask(task);
+        return;
+        }
+        if (task instanceof StudyTask) {
+            StudyTaskController studyTaskController = new StudyTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
+            studyTaskController.updateTask(task);
+        return;
+        }
+        if (task instanceof WorkTask) {
+            WorkTaskController workTaskController = new WorkTaskController(new TaskService<>(new TaskRepositoryImpl<>()));
+            workTaskController.updateTask(task);
+        return;
+        }
+        System.out.println("Invalid task type.");
     }
 
 //    static void newBaseTask() {
