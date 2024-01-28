@@ -43,23 +43,22 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
     }
 
     @Override
-    public void updateTask(BaseTask task) {
-        Integer id = sc.nextInt();
-        T selectedTask = taskService.findById(id);
+    public void updateTask(Integer taskId, BaseTask task) {
+//        Integer id = sc.nextInt();
+        T selectedTask = taskService.findById(taskId);
 
         System.out.print("Insert new study task title: ");
         String updatedTitle = sc.nextLine();
         selectedTask.setTitle(updatedTitle);
 
-        System.out.println("Insert new study task description: ");
+        System.out.print("Insert new study task description: ");
         String updatedDescription = sc.nextLine();
         selectedTask.setDescription(updatedDescription);
 
-        System.out.println("Change task priority: ");
         Priority updatedPriority = choosePriority();
         selectedTask.setPriority(updatedPriority);
 
-        System.out.println("Change study task status: ");
+
         CurrentStatus updatedStatus = chooseStatus();
         selectedTask.setCurrentStatus(updatedStatus);
 

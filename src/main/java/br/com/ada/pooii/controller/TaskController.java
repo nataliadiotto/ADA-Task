@@ -14,7 +14,7 @@ public interface TaskController <T extends BaseTask> {
 
     void displayTasks();
 
-   void updateTask(T task);
+   void updateTask(Integer taskId, T task);
 
     void deleteTask();
 
@@ -83,10 +83,10 @@ public interface TaskController <T extends BaseTask> {
                     break;
                 case 2:
                     System.out.println("--- EDIT TASK ---");
-                    System.out.println("Insert the ID: ");
+                    System.out.print("Insert the task ID to edit: ");
                     int taskToEditID  = sc.nextInt();
                     BaseTask task = taskRepository.findById(taskToEditID);
-                    updateTaskByType((T) task);
+                    updateTaskByType(taskToEditID,(T) task);
                     break;
                 case 3:
                     System.out.println("--- DELETE TASK ---");
@@ -116,7 +116,7 @@ public interface TaskController <T extends BaseTask> {
                         "4. List all tasks\n" +
                         "5. Exit");
         System.out.print("Choose an option: ");
-        System.out.println();
+
     }
 
     static void taskTypeMenu() {
@@ -151,20 +151,25 @@ public interface TaskController <T extends BaseTask> {
         }
     }
 
-    default void updateTaskByType(T task) {
+    default void updateTaskByType(Integer taskId, T task) {
+        if (task == null) {
+            System.out.println("Task not found.");
+            return;
+        }
+
         if (task instanceof PersonalTask) {
             PersonalTaskController personalTaskController = new PersonalTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
-            personalTaskController.updateTask(task);
+            personalTaskController.updateTask(taskId, task);
         return;
         }
         if (task instanceof StudyTask) {
             StudyTaskController studyTaskController = new StudyTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
-            studyTaskController.updateTask(task);
+            studyTaskController.updateTask(taskId, task);
         return;
         }
         if (task instanceof WorkTask) {
             WorkTaskController workTaskController = new WorkTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
-            workTaskController.updateTask(task);
+            workTaskController.updateTask(taskId, task);
         return;
         }
         System.out.println("Invalid task type.");

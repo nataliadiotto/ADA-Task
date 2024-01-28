@@ -57,7 +57,10 @@ public class TaskRepositoryImpl<T extends BaseTask, U> implements Repository<T, 
     @Override
     public T findById(Integer id) {
         Integer taskIndex = findIndexById(id);
-        return this.tasks.get(taskIndex);
+        if (taskIndex != -1) {
+            return this.tasks.get(taskIndex);
+        }
+        throw new IllegalArgumentException("No tasks were found with ID: " + id);
     }
 
 
