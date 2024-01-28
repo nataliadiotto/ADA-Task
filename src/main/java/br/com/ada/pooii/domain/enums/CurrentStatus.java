@@ -1,4 +1,4 @@
-package br.com.ada.pooii.domain;
+package br.com.ada.pooii.domain.enums;
 
 public enum CurrentStatus {
 

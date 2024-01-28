@@ -1,5 +1,8 @@
 package br.com.ada.pooii.domain;
 
+import br.com.ada.pooii.domain.enums.CurrentStatus;
+import br.com.ada.pooii.domain.enums.Priority;
+
 import java.time.LocalDateTime;
 
 // TODO: 22/01/24 add deadline

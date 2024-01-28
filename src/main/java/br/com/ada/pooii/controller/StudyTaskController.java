@@ -1,14 +1,12 @@
 package br.com.ada.pooii.controller;
 
 import br.com.ada.pooii.domain.BaseTask;
-import br.com.ada.pooii.domain.CurrentStatus;
-import br.com.ada.pooii.domain.Priority;
+import br.com.ada.pooii.domain.enums.CurrentStatus;
+import br.com.ada.pooii.domain.enums.Priority;
 import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.service.TaskService;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class StudyTaskController <T extends BaseTask> implements TaskController{

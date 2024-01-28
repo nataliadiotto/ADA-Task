@@ -2,6 +2,8 @@ package br.com.ada.pooii;
 
 import br.com.ada.pooii.controller.*;
 import br.com.ada.pooii.domain.*;
+import br.com.ada.pooii.domain.enums.CurrentStatus;
+import br.com.ada.pooii.domain.enums.Priority;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
 import br.com.ada.pooii.service.TaskService;
 

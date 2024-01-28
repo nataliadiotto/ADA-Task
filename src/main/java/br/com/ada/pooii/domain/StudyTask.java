@@ -1,7 +1,7 @@
 package br.com.ada.pooii.domain;
 
-import java.time.LocalDateTime;
-import java.util.Random;
+import br.com.ada.pooii.domain.enums.CurrentStatus;
+import br.com.ada.pooii.domain.enums.Priority;
 
 public class StudyTask extends BaseTask{
 

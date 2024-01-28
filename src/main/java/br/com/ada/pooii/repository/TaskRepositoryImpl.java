@@ -1,7 +1,7 @@
 package br.com.ada.pooii.repository;
 
 import br.com.ada.pooii.domain.BaseTask;
-import br.com.ada.pooii.domain.Priority;
+import br.com.ada.pooii.domain.enums.Priority;
 
 import java.util.ArrayList;
 import java.util.List;
