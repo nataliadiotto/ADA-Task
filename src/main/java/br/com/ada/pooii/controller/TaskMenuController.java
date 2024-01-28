@@ -4,6 +4,7 @@ import br.com.ada.pooii.domain.BaseTask;
 import br.com.ada.pooii.domain.PersonalTask;
 import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.domain.WorkTask;
+import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
 import br.com.ada.pooii.service.TaskService;
 
@@ -78,21 +79,21 @@ public class TaskMenuController<T extends BaseTask>{
         System.out.print("Choose an option: ");
         int taskOption = sc.nextInt();
         System.out.println();
-        String taskType;
+        TaskType taskType;
 
         switch (taskOption){
             case 1:
-                taskType = "Personal Task";
+                taskType = TaskType.PERSONAL;
                 TaskController<PersonalTask> personalTaskController = new PersonalTaskController(new TaskService<>(TaskRepositoryImpl.getInstance()));
                 personalTaskController.createTask();
                 break;
             case 2:
-                taskType = "Study Task";
+                taskType = TaskType.STUDY;
                 TaskController<StudyTask> studyTaskTaskController = new StudyTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
                 studyTaskTaskController.createTask();
                 break;
             case 3:
-                taskType = "Work Task";
+                taskType = TaskType.WORK;
                 TaskController<WorkTask> workTaskTaskController = new WorkTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
                 workTaskTaskController.createTask();
                 break;
