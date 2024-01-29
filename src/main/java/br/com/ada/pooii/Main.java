@@ -7,6 +7,7 @@ import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.domain.WorkTask;
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
 import br.com.ada.pooii.service.TaskService;
 
@@ -38,6 +39,7 @@ public class Main {
     protected static void populateList(TaskService<BaseTask, Integer> taskService) {
         BaseTask personalTask = new PersonalTask("Clean bedroom",
                 "I need to clean my bedroom",
+                TaskType.PERSONAL,
                 Priority.LOW,
                 CurrentStatus.PENDING,
                 "house chores");
@@ -45,6 +47,7 @@ public class Main {
 
         BaseTask workTask = new WorkTask("Confirm new hire",
                 "Call Mr. Peabody from H.R. to confirm new accountant hire",
+                TaskType.WORK,
                 Priority.HIGH,
                 CurrentStatus.PENDING,
                 "Budget Review");
@@ -52,6 +55,7 @@ public class Main {
 
         BaseTask studyTask = new StudyTask("Prepare presentation",
                 "Prepare ppt presentation on Phonetics and Phonology",
+                TaskType.STUDY,
                 Priority.MEDIUM,
                 CurrentStatus.IN_PROGRESS,
                 "English");

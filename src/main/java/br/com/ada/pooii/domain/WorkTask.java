@@ -2,13 +2,14 @@ package br.com.ada.pooii.domain;
 
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 
 public class WorkTask extends BaseTask{
 
     private String project;
 
-    public WorkTask(String title, String description, Priority priority, CurrentStatus currentStatus, String project) {
-        super(title, description, priority, currentStatus);
+    public WorkTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus, String project) {
+        super(title, description, taskType, priority, currentStatus);
         this.project = project;
     }
 

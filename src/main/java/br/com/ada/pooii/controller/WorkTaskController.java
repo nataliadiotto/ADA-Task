@@ -4,6 +4,7 @@ import br.com.ada.pooii.domain.BaseTask;
 import br.com.ada.pooii.domain.WorkTask;
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
     }
 
     @Override
-    public void createTask() {
+    public void createTask(TaskType taskType) {
         System.out.print("Insert task title: ");
         String title = sc.nextLine();
         System.out.print("Insert task description: ");
@@ -31,7 +32,7 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
         System.out.print("Insert work task project: ");
         String project = sc.nextLine();
 
-        BaseTask workTask = new WorkTask(title, description, priority, status, project);
+        BaseTask workTask = new WorkTask(title, description, taskType, priority, status, project);
         taskService.saveTask((T) workTask);// como fazer sem casting?
         System.out.println("Work Task saved successfully!");
     }

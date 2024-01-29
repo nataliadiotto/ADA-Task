@@ -2,13 +2,14 @@ package br.com.ada.pooii.domain;
 
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 
 public class PersonalTask extends BaseTask{
 
     private String label;
 
-    public PersonalTask(String title, String description, Priority priority, CurrentStatus currentStatus, String label) {
-        super(title, description, priority, currentStatus);
+    public PersonalTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus, String label) {
+        super(title, description, taskType, priority, currentStatus);
         this.label = label;
 
     }

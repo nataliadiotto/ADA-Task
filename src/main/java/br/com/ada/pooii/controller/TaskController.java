@@ -6,6 +6,7 @@ import br.com.ada.pooii.domain.PersonalTask;
 import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.domain.WorkTask;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.repository.TaskRepositoryImpl;
 import br.com.ada.pooii.service.TaskService;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
 
 public interface TaskController <T extends BaseTask> {
 
-    void createTask();
+    void createTask(TaskType taskType);
 
     void displayTasks();
 
@@ -70,6 +71,33 @@ public interface TaskController <T extends BaseTask> {
         }
 
     }
+
+    default TaskType chooseTaskType(Integer taskOption){
+        Scanner sc = new Scanner(System.in);
+        TaskType taskType = null;
+
+        switch (taskOption){
+                case 1:
+                    TaskController<PersonalTask> personalTaskController = new PersonalTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
+                    personalTaskController.createTask(taskType = TaskType.PERSONAL);
+                    break;
+                case 2:
+                    TaskController<StudyTask> studyTaskTaskController = new StudyTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
+                    studyTaskTaskController.createTask(taskType = TaskType.STUDY);
+                    break;
+                case 3:
+                    TaskController<WorkTask> workTaskTaskController = new WorkTaskController<>(new TaskService<>(TaskRepositoryImpl.getInstance()));
+                    workTaskTaskController.createTask(taskType = TaskType.WORK);
+                    break;
+                default:
+                    System.out.println("Choose a valid option.");
+                    chooseTaskType(taskOption);
+        }
+        return taskType;
+    }
+
+
+
 
     default void updateTaskByType(Integer taskId, T task) {
         if (task == null) {

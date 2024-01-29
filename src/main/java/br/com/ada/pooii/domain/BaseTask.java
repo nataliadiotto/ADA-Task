@@ -2,6 +2,7 @@ package br.com.ada.pooii.domain;
 
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,14 +17,16 @@ public class BaseTask {
     private Integer id;
     private String title;
     private String description;
+    private TaskType taskType;
     private LocalDateTime createdAt;
     private Priority priority;
     private CurrentStatus currentStatus;
 
-    public BaseTask(String title, String description, Priority priority, CurrentStatus currentStatus) {
+    public BaseTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus) {
         this.id = generateId();
         this.title = title;
         this.description = description;
+        this.taskType = taskType;
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
         this.currentStatus = currentStatus;
@@ -39,10 +42,6 @@ public class BaseTask {
     public Integer getId() {
         return id;
     }
-
-//    public void setId(Integer id){
-//        this.id = id;
-//    }
 
     public String getTitle() {
         return title;

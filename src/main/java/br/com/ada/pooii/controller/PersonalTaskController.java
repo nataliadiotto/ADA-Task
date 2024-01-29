@@ -4,6 +4,7 @@ import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.BaseTask;
 import br.com.ada.pooii.domain.PersonalTask;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
     }
 
     @Override
-    public void createTask() {
+    public void createTask(TaskType taskType) {
         System.out.print("Insert task title: ");
         String title = sc.nextLine();
         System.out.print("Insert task description: ");
@@ -31,7 +32,7 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
         System.out.println("Insert personal task category: ");
         String category = sc.nextLine();
 
-        BaseTask personalTask = new PersonalTask(title, description, priority, status, category);
+        BaseTask personalTask = new PersonalTask(title, description, taskType, priority, status, category);
         taskService.saveTask((T) personalTask);// como fazer sem casting?
         System.out.println("Personal Task saved successfully!");
     }
@@ -43,8 +44,6 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
 
     @Override
     public void updateTask(Integer taskId, BaseTask task) {
-//        System.out.println("Choose a task to edit (id): ");
-//        Integer id = sc.nextInt();
         T selectedTask = taskService.findById(taskId);
 
         System.out.print("Insert new personal task title: ");

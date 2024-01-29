@@ -4,6 +4,7 @@ import br.com.ada.pooii.domain.BaseTask;
 import br.com.ada.pooii.domain.StudyTask;
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
 
@@ -21,7 +22,7 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
     }
 
     @Override
-    public void createTask() {
+    public void createTask(TaskType taskType) {
         System.out.print("Insert task title: ");
         String title = sc.nextLine();
         System.out.print("Insert task description: ");
@@ -32,7 +33,7 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         System.out.print("Insert study task subject: ");
         String studySubject = sc.nextLine();
 
-        BaseTask studyTask = new StudyTask(title, description, priority, status, studySubject);
+        BaseTask studyTask = new StudyTask(title, description, taskType, priority, status, studySubject);
         taskService.saveTask((T) studyTask);// como fazer sem casting?
         System.out.println("Study Task saved successfully!");
     }

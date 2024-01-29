@@ -2,13 +2,14 @@ package br.com.ada.pooii.domain;
 
 import br.com.ada.pooii.domain.enums.CurrentStatus;
 import br.com.ada.pooii.domain.enums.Priority;
+import br.com.ada.pooii.domain.enums.TaskType;
 
 public class StudyTask extends BaseTask{
 
     private String studySubject;
 
-    public StudyTask(String title, String description, Priority priority, CurrentStatus currentStatus, String studySubject) {
-        super(title, description, priority, currentStatus);
+    public StudyTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus, String studySubject) {
+        super(title, description, taskType, priority, currentStatus);
         this.studySubject = studySubject;
     }
 
