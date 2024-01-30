@@ -31,7 +31,6 @@ public class TaskMenuController<T extends BaseTask>{
                     System.out.print("Choose an option: ");
                     int taskOption = sc.nextInt();
                     TaskType taskType = taskController.chooseTaskType(taskOption);
-                    //taskController.createTask(taskType);
                     break;
                 case 2:
                     System.out.println("--- EDIT TASK ---");

@@ -40,6 +40,7 @@ public class Main {
         BaseTask personalTask = new PersonalTask("Clean bedroom",
                 "I need to clean my bedroom",
                 TaskType.PERSONAL,
+                "04/16/2024",
                 Priority.LOW,
                 CurrentStatus.PENDING,
                 "house chores");
@@ -48,6 +49,7 @@ public class Main {
         BaseTask workTask = new WorkTask("Confirm new hire",
                 "Call Mr. Peabody from H.R. to confirm new accountant hire",
                 TaskType.WORK,
+                "03/25/2024",
                 Priority.HIGH,
                 CurrentStatus.PENDING,
                 "Budget Review");
@@ -56,6 +58,7 @@ public class Main {
         BaseTask studyTask = new StudyTask("Prepare presentation",
                 "Prepare ppt presentation on Phonetics and Phonology",
                 TaskType.STUDY,
+                "02/02/2024",
                 Priority.MEDIUM,
                 CurrentStatus.IN_PROGRESS,
                 "English");

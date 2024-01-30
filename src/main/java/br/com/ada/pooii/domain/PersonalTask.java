@@ -8,8 +8,8 @@ public class PersonalTask extends BaseTask{
 
     private String label;
 
-    public PersonalTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus, String label) {
-        super(title, description, taskType, priority, currentStatus);
+    public PersonalTask(String title, String description, TaskType taskType, String deadline, Priority priority, CurrentStatus currentStatus, String label) {
+        super(title, description, taskType, deadline, priority, currentStatus);
         this.label = label;
 
     }

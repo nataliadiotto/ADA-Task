@@ -8,8 +8,8 @@ public class WorkTask extends BaseTask{
 
     private String project;
 
-    public WorkTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus, String project) {
-        super(title, description, taskType, priority, currentStatus);
+    public WorkTask(String title, String description, TaskType taskType, String deadline, Priority priority, CurrentStatus currentStatus, String project) {
+        super(title, description, taskType, deadline, priority, currentStatus);
         this.project = project;
     }
 
@@ -20,6 +20,7 @@ public class WorkTask extends BaseTask{
     public void setProject(String project) {
         this.project = project;
     }
+
 
     @Override
     public void printTasks() {

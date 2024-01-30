@@ -8,8 +8,8 @@ public class StudyTask extends BaseTask{
 
     private String studySubject;
 
-    public StudyTask(String title, String description, TaskType taskType, Priority priority, CurrentStatus currentStatus, String studySubject) {
-        super(title, description, taskType, priority, currentStatus);
+    public StudyTask(String title, String description, TaskType taskType, String deadline, Priority priority, CurrentStatus currentStatus, String studySubject) {
+        super(title, description, taskType, deadline, priority, currentStatus);
         this.studySubject = studySubject;
     }
 

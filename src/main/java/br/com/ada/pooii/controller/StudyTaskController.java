@@ -8,6 +8,8 @@ import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class StudyTaskController <T extends BaseTask> implements TaskController{
@@ -29,11 +31,15 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
+
+        System.out.print("Insert personal task deadline (mm/dd/yyyy): ");
+        String deadline = sc.nextLine();
+
         CurrentStatus status = chooseStatus();
         System.out.print("Insert study task subject: ");
         String studySubject = sc.nextLine();
 
-        BaseTask studyTask = new StudyTask(title, description, taskType, priority, status, studySubject);
+        BaseTask studyTask = new StudyTask(title, description, taskType, deadline, priority, status, studySubject);
         taskService.saveTask((T) studyTask);// como fazer sem casting?
         System.out.println("Study Task saved successfully!");
     }
@@ -45,7 +51,6 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
 
     @Override
     public void updateTask(Integer taskId, BaseTask task) {
-//        Integer id = sc.nextInt();
         T selectedTask = taskService.findById(taskId);
 
         System.out.print("Insert new study task title: ");
@@ -64,7 +69,7 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
         selectedTask.setCurrentStatus(updatedStatus);
 
         //check if selectedTask has studySubject attribute
-        if (selectedTask instanceof StudyTask) {
+        if (selectedTask.getTaskType() == TaskType.STUDY) {
             System.out.println("Insert new study task subject: ");
             String updatedSubject = sc.nextLine();
             ((StudyTask) selectedTask).setStudySubject(updatedSubject);

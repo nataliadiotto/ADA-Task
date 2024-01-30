@@ -7,6 +7,8 @@ import br.com.ada.pooii.domain.enums.Priority;
 import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class PersonalTaskController <T extends BaseTask> implements TaskController {
@@ -28,11 +30,15 @@ public class PersonalTaskController <T extends BaseTask> implements TaskControll
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
+
+        System.out.print("Insert personal task deadline (mm/dd/yyyy): ");
+        String deadline = sc.nextLine();
+
         CurrentStatus status = chooseStatus();
         System.out.println("Insert personal task category: ");
         String category = sc.nextLine();
 
-        BaseTask personalTask = new PersonalTask(title, description, taskType, priority, status, category);
+        BaseTask personalTask = new PersonalTask(title, description, taskType, deadline, priority, status, category);
         taskService.saveTask((T) personalTask);// como fazer sem casting?
         System.out.println("Personal Task saved successfully!");
     }
