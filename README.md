@@ -73,20 +73,34 @@ The application stores tasks using the TaskRepositoryImpl, which provides basic 
 6. **Application Initialization**
 The Main class serves as the entry point for the application. It initializes a sample set of tasks using the populateList method and provides a simple user interface for interacting with the task management system.
 
-Getting Started
+    ```java
+    // Example of initializing the application
+    public static void main(String[] args) {
+    TaskRepositoryImpl<BaseTask, Integer> taskRepository = new TaskRepositoryImpl<>();
+    TaskService<BaseTask, Integer> taskService = new TaskService<>(taskRepository);
+    TaskController taskController = new PersonalTaskController<>(taskService);
+    populateList(taskService);  // Initialize with sample tasks
+    taskController.displayTasks();  // Display all tasks
+    
+    // Additional user interactions can be added here
+    ```
 
-Clone the repository to your local machine.
-bash
-Copy code
-git clone <repository_url>
-Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse).
-Run the Main class to start the application.
-Follow the on-screen instructions to interact with the Personal Task Manager.
-Enjoy organizing your tasks with the Personal Task Manager!
+## Getting Started
 
+1. Clone the repository to your local machine.
 
-📫 Contributing to Ada Task
+    ```bash
+    bashCopy code
+    git clone <repository_url>
+    ```
 
+1. Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse).
+2. Run the **`Main`** class to start the application.
+3. Follow the on-screen instructions to interact with the Personal Task Manager.
+
+### 📫 Contributing to Ada Task
+
+😄 Become a Contributor
 To contribute to Ada Task, follow these steps:
 
 1. Fork this repository.
@@ -96,11 +110,3 @@ To contribute to Ada Task, follow these steps:
 5. Create the pull request.
 
 Alternatively, see the GitHub documentation on how to create a pull request.
-
-😄 Become a Contributor
-
-Want to contribute to this project? Click HERE and read how to contribute.
-
-📝 License
-
-This project is licensed under the LICENSE.
