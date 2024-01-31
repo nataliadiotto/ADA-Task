@@ -42,6 +42,7 @@ BaseTask personalTask = new PersonalTask("Clean bedroom",
         CurrentStatus.PENDING,
         "house chores");
 taskService.saveTask(personalTask);
+
 2. Displaying Tasks
 Users can view all tasks, providing an overview of their pending tasks. This functionality is available through the displayTasks method in the TaskController.
 
@@ -49,13 +50,13 @@ java
 Copy code
 // Example of displaying all tasks
 taskService.findAll();
+
 3. Task Update
 Users can update existing tasks, modifying attributes like title, description, deadline, priority, and status.
 
-java
-Copy code
 // Example of updating a Personal Task
 taskController.updateTask(1, personalTask);
+
 4. Task Deletion
 Users have the ability to delete tasks based on their unique identifiers.
 
@@ -63,6 +64,7 @@ java
 Copy code
 // Example of deleting a task by ID
 taskController.deleteTask(1);
+
 5. Task Persistence
 The application stores tasks using the TaskRepositoryImpl, which provides basic CRUD operations for task management. Tasks are stored in-memory during the application's runtime.
 
@@ -82,6 +84,7 @@ public static void main(String[] args) {
 
     // Additional user interactions can be added here
 }
+
 Getting Started
 
 Clone the repository to your local machine.
