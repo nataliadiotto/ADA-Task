@@ -5,7 +5,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/nataliadiotto/ADA-Task?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/nataliadiotto/ADA-Task?style=for-the-badge)
 
-# **Ada Task**
+### ADA TASK
 
 Ada Task is a console-based task management application for personal, study, and work tasks. It provides functionalities for task creation, editing, deletion, and listing, with a focus on simplicity and ease of use.
 
