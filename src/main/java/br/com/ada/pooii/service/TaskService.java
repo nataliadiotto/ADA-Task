@@ -15,15 +15,21 @@ public class TaskService <T extends BaseTask, ID>{
 
     public void saveTask(T task) {
         System.out.println("Saving task " + task.getId() + " - " + task.getTitle() + "...");
-        taskRepositoryImpl.addTask(task);
+        //Check if task title is unique
+        if (isTitleUnique(task.getTitle())) {
+                taskRepositoryImpl.addTask(task);
+                System.out.println("Task saved successfully!");
+        } else {
+            System.out.println("A task with the same title already exists. Please use a unique title.");
+        }
     }
+
 
     public void deleteTask(Integer id) {
         System.out.println("Deleting task " + id + "...");
         taskRepositoryImpl.deleteTask(id);
     }
 
-    //update task nao é a mesma coisa que get + save?
     public void updateTask(T task) {
         System.out.println("Updating task " + task.getId() + "...");
         taskRepositoryImpl.updateTask(task);
@@ -43,6 +49,16 @@ public class TaskService <T extends BaseTask, ID>{
         return taskRepositoryImpl.findById(id);
     }
 
-
+    //Check if task title is unique
+    private boolean isTitleUnique(String title) {
+        List<T> tasks = taskRepositoryImpl.findAll();
+        for (T task : tasks) {
+            if (task.getTitle().equals(title)) {
+                return false; // Title already exists
+            }
+        }
+        return true; // Title is unique
+    }
 
 }
+

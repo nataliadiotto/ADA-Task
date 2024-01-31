@@ -37,7 +37,7 @@ public class TaskMenuController<T extends BaseTask>{
                     System.out.print("Insert the task ID to edit: ");
                     int taskToEditID = sc.nextInt();
                     BaseTask task = taskRepository.findById(taskToEditID);
-                    taskController.updateTask(taskToEditID, (T) task);
+                    taskController.updateTaskByType(taskToEditID, (T) task);
                     break;
                 case 3:
                     System.out.println("--- DELETE TASK ---");

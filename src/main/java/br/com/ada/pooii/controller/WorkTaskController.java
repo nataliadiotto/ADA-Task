@@ -7,8 +7,6 @@ import br.com.ada.pooii.domain.enums.Priority;
 import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class WorkTaskController <T extends BaseTask> implements TaskController {
@@ -24,9 +22,9 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
 
     @Override
     public void createTask(TaskType taskType) {
-        System.out.print("Insert task title: ");
+        System.out.print("Insert work task title: ");
         String title = sc.nextLine();
-        System.out.print("Insert task description: ");
+        System.out.print("Insert work task description: ");
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
@@ -50,30 +48,33 @@ public class WorkTaskController <T extends BaseTask> implements TaskController {
 
     @Override
     public void updateTask(Integer taskId, BaseTask task) {
-//        System.out.println("Choose a task to edit (id): ");
-//        Integer id = sc.nextInt();
         T selectedTask = taskService.findById(taskId);
 
         System.out.print("Insert new work task title: ");
         String updatedTitle = sc.nextLine();
-        selectedTask.setTitle(updatedTitle);
 
         System.out.print("Insert new work task description: ");
         String updatedDescription = sc.nextLine();
-        selectedTask.setDescription(updatedDescription);
+
+        System.out.print("Insert new work deadline (mm/dd/yyyy): ");
+        String updatedDeadline = sc.nextLine();
 
         Priority updatedPriority = choosePriority();
-        selectedTask.setPriority(updatedPriority);
 
         CurrentStatus updatedStatus = chooseStatus();
-        selectedTask.setCurrentStatus(updatedStatus);
 
         //check if selectedTask has project attribute
-        if (selectedTask instanceof WorkTask) {
-            System.out.println("Insert new work task project: ");
+        if (selectedTask.getTaskType() == TaskType.WORK) {
+            System.out.print("Insert new work task project: ");
             String updatedProject = sc.nextLine();
             ((WorkTask) selectedTask).setProject(updatedProject);
         }
+
+        selectedTask.setTitle(updatedTitle);
+        selectedTask.setDescription(updatedDescription);
+        selectedTask.setDeadline(updatedDeadline);
+        selectedTask.setPriority(updatedPriority);
+        selectedTask.setCurrentStatus(updatedStatus);
 
         taskService.updateTask(selectedTask);
         System.out.println("Work Task updated successfully!");

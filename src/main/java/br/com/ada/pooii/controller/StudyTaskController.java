@@ -7,9 +7,6 @@ import br.com.ada.pooii.domain.enums.Priority;
 import br.com.ada.pooii.domain.enums.TaskType;
 import br.com.ada.pooii.service.TaskService;
 
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class StudyTaskController <T extends BaseTask> implements TaskController{
@@ -25,14 +22,14 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
 
     @Override
     public void createTask(TaskType taskType) {
-        System.out.print("Insert task title: ");
+        System.out.print("Insert study task title: ");
         String title = sc.nextLine();
-        System.out.print("Insert task description: ");
+        System.out.print("Insert study task description: ");
         String description = sc.nextLine();
 
         Priority priority = choosePriority();
 
-        System.out.print("Insert personal task deadline (mm/dd/yyyy): ");
+        System.out.print("Insert study task deadline (mm/dd/yyyy): ");
         String deadline = sc.nextLine();
 
         CurrentStatus status = chooseStatus();
@@ -55,25 +52,29 @@ public class StudyTaskController <T extends BaseTask> implements TaskController{
 
         System.out.print("Insert new study task title: ");
         String updatedTitle = sc.nextLine();
-        selectedTask.setTitle(updatedTitle);
 
         System.out.print("Insert new study task description: ");
         String updatedDescription = sc.nextLine();
-        selectedTask.setDescription(updatedDescription);
+
+        System.out.print("Insert new study work deadline (mm/dd/yyyy): ");
+        String updatedDeadline = sc.nextLine();
 
         Priority updatedPriority = choosePriority();
-        selectedTask.setPriority(updatedPriority);
-
 
         CurrentStatus updatedStatus = chooseStatus();
-        selectedTask.setCurrentStatus(updatedStatus);
 
         //check if selectedTask has studySubject attribute
         if (selectedTask.getTaskType() == TaskType.STUDY) {
-            System.out.println("Insert new study task subject: ");
+            System.out.print("Insert new study task subject: ");
             String updatedSubject = sc.nextLine();
             ((StudyTask) selectedTask).setStudySubject(updatedSubject);
         }
+
+        selectedTask.setTitle(updatedTitle);
+        selectedTask.setDescription(updatedDescription);
+        selectedTask.setDeadline(updatedDeadline);
+        selectedTask.setPriority(updatedPriority);
+        selectedTask.setCurrentStatus(updatedStatus);
 
         taskService.updateTask(selectedTask);
         System.out.println("Study Task updated successfully!");

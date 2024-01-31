@@ -7,8 +7,7 @@ import br.com.ada.pooii.domain.enums.TaskType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-// TODO: 22/01/24 add deadline
+import java.time.format.DateTimeParseException;
 
 public class BaseTask {
 
@@ -21,12 +20,15 @@ public class BaseTask {
     private Priority priority;
     private CurrentStatus currentStatus;
 
+    private static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm:ss");
+
     public BaseTask(String title, String description, TaskType taskType, String deadline, Priority priority, CurrentStatus currentStatus) {
         this.id = generateId();
         this.title = title;
         this.description = description;
         this.taskType = taskType;
-        LocalDate parsedDeadline = parseDeadline(deadline);
+        LocalDate parsedDeadline = parseDeadline(deadline.trim());
         this.deadline = dateFormatter.format(parsedDeadline);
         this.createdAt = LocalDateTime.now();
         this.priority = priority;
@@ -34,14 +36,14 @@ public class BaseTask {
 
     }
 
-    private static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm:ss");
-    //LocalDateTime formattedDeadline = LocalDateTime.parse(deadline, dateFormatter);
-
     private LocalDate parseDeadline(String deadlineString) {
-        return LocalDate.parse(deadlineString, dateFormatter);
+        try {
+            return LocalDate.parse(deadlineString, dateFormatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Error parsing deadline: " + e.getMessage());
+            throw e;
+        }
     }
-
 
     private static int lastId = 0; // Static variable to keep track of the last generated ID
 
@@ -110,8 +112,7 @@ public class BaseTask {
     }
 
     public void printTasks()  {
-        System.out.println("\n-------- TASK --------");
-        System.out.println(taskType + " TASK");
+        System.out.println("\n-------- " + taskType + " TASK --------");
         System.out.println("Id: " + id);
         System.out.println("Title: " + title);
         System.out.println("Description: " + description);

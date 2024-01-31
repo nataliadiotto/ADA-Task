@@ -36,20 +36,21 @@ public class Main {
         sc.close();
     }
 
-    protected static void populateList(TaskService<BaseTask, Integer> taskService) {
+    private static void populateList(TaskService<BaseTask, Integer> taskService) {
         BaseTask personalTask = new PersonalTask("Clean bedroom",
                 "I need to clean my bedroom",
                 TaskType.PERSONAL,
-                "04/16/2024",
+                "04/05/2024",
                 Priority.LOW,
                 CurrentStatus.PENDING,
                 "house chores");
+        System.out.println("Deadline string: " + personalTask.getDeadline());
         taskService.saveTask(personalTask);
 
         BaseTask workTask = new WorkTask("Confirm new hire",
                 "Call Mr. Peabody from H.R. to confirm new accountant hire",
                 TaskType.WORK,
-                "03/25/2024",
+                "03/04/2024",
                 Priority.HIGH,
                 CurrentStatus.PENDING,
                 "Budget Review");
