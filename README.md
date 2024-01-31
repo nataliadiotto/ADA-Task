@@ -19,13 +19,6 @@ The project is still under development, and the next updates will focus on the f
 - Implementation of user authentication
 - User interface improvements
 
-### **💻 Prerequisites**
-
-Before you begin, ensure you have met the following requirements:
-
-- You have installed the latest version of the Java Development Kit (JDK).
-- You have a Windows, Linux, or macOS machine.
-- You have read the documentation related to the project.
 
 ### Application Flow
 
@@ -85,20 +78,28 @@ The Main class serves as the entry point for the application. It initializes a s
     // Additional user interactions can be added here
     ```
 
+
+### **💻 Prerequisites**
+
+Before you begin, ensure you have met the following requirements:
+
+- You have installed the latest version of the Java Development Kit (JDK).
+- You have a Windows, Linux, or macOS machine.
+- You have read the documentation related to the project.
+
+
 ## Getting Started
 
 1. Clone the repository to your local machine.
 
-    ```bash
-    bashCopy code
-    git clone <repository_url>
-    ```
+    `git clone <repository_url>`
 
 1. Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse).
 2. Run the **`Main`** class to start the application.
 3. Follow the on-screen instructions to interact with the Personal Task Manager.
 
-### 📫 Contributing to Ada Task
+
+## 📫 Contributing to Ada Task
 
 😄 Become a Contributor
 To contribute to Ada Task, follow these steps:
